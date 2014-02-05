@@ -1,5 +1,5 @@
 /*!
- * jQuery Fader Plugin v1
+ * jQuery Responsive Image Plugin v1
  * https://github.com/richard-parnaby-king/Responsive-Images
  *
  * @Copyright 2013 Richard Parnaby-King
