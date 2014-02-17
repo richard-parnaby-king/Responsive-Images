@@ -9,6 +9,9 @@
 (function($){
   "use strict";
   $.fn.responsivePictures = function(){
+    //img attributes to use
+    var attributes = ['alt','class','id','style'];
+    
     //only run this code if window.matchMedia is available
     if(window.matchMedia) {
       this.each(function() {
@@ -40,7 +43,12 @@
           }
 
           //Set the alt text (good for SEO)
-          img.alt = $(this).find('img').attr('alt');
+          var oldimg = $(this).find('img');
+          for (var i = 0; i < attributes.length; i++) {
+            if(oldimg.attr(attributes[i]) != undefined) {
+              img.setAttribute(attributes[i], oldimg.attr(attributes[i]));
+            }
+          }
 
           //replace picture with image
           $(this).replaceWith(img);
