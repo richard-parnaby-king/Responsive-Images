@@ -49,5 +49,5 @@
       console.log('window.matchMedia is not supported in this browser');
     }
   }
-  $('picture').responsivePictures();
+  $(function($){ $('picture').responsivePictures(); });
 })(jQuery);
