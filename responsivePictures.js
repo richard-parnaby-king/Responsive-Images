@@ -32,7 +32,7 @@
             
             //If media query is valid, then set the source url
             if(window.matchMedia(s.attr('media')).matches) {
-              img.src = s.attr('src');
+              img.src = s.attr('srcset');
               return false;
             }
           });
@@ -57,5 +57,10 @@
       console.log('window.matchMedia is not supported in this browser');
     }
   }
-  $(function($){ $('picture').responsivePictures(); });
+	//if browse does not support picture, then do this
+  $(function($){ 
+		if(window.HTMLPictureElement == undefined) {
+			$('picture').responsivePictures();
+		}
+	});
 })(jQuery);
