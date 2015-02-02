@@ -32,7 +32,21 @@
             
             //If media query is valid, then set the source url
             if(window.matchMedia(s.attr('media')).matches) {
-              img.src = s.attr('srcset');
+							var imgs = s.attr('srcset').split(','),
+								imgsLength = imgs.length;
+							if(imgsLength > 1) {
+								var PixelRatio = 1;
+								//check for retina display
+								if(window.devicePixelRatio !== undefined) PixelRatio = window.devicePixelRatio;
+								for(var i = 0; i < imgsLength; i++) {
+									var currentImg = imgs[i].trim();
+									if(currentImg.lastIndexOf(' ' + PixelRatio + 'x') == currentImg.length - 3) {
+										img.src = currentImg.slice(0,-3);
+										return false;
+									}
+								}
+							}
+              img.src = imgs[0];
               return false;
             }
           });
